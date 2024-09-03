@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginInputs, RegisterInputs } from "./pages/SignIn/models";
+import { LoginInputs, RegisterInputs } from "./pages/SignIn/forms/models";
 
 export class API {
   private static instance = axios.create({

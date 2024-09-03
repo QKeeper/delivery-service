@@ -1,8 +1,13 @@
-import Login from "./Login";
-import { SignInProps } from "./models";
-import Register from "./Register";
+import Login from "./forms/Login";
+import Register from "./forms/Register";
+import { SignInProps } from "./forms/models";
 
-const SignIn = ({ register }: SignInProps) =>
-  register ? <Register /> : <Login />;
+function SignIn({ register }: SignInProps) {
+  return (
+    <div className="my-8 flex items-center justify-center">
+      {register ? <Register /> : <Login />}
+    </div>
+  );
+}
 
 export default SignIn;
