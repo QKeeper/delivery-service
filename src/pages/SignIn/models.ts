@@ -1,5 +1,5 @@
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
-import { ComponentProps } from "react";
+import { ComponentProps, ReactNode } from "react";
 
 export interface SignInProps {
   register?: boolean;
@@ -22,4 +22,5 @@ export interface FormFieldProps extends ComponentProps<"input"> {
   register: UseFormRegisterReturn;
   error: FieldError | undefined;
   errorMsg?: string;
+  children?: ReactNode;
 }

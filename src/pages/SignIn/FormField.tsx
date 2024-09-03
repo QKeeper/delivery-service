@@ -7,6 +7,7 @@ function FormField({
   errorMsg,
   label,
   className,
+  children,
   ...rest
 }: FormFieldProps) {
   return (
@@ -24,6 +25,7 @@ function FormField({
         )}
       />
       {error && errorMsg && <p className="text-sm text-red-500">{errorMsg}</p>}
+      {children}
     </label>
   );
 }

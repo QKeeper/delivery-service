@@ -5,6 +5,8 @@ import { PATTERNS } from "../../utils/patterns";
 import Button from "../../components/Button";
 import { API } from "../../api";
 import { Link } from "react-router-dom";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { useState } from "react";
 
 function Register() {
   const {
@@ -12,6 +14,8 @@ function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterInputs>();
+
+  const [viewPass, setViewPass] = useState(false);
 
   const onSubmit = handleSubmit((data) => API.User.register(data));
 
@@ -45,7 +49,7 @@ function Register() {
 
         <FormField
           label="Пароль"
-          type="password"
+          type={viewPass ? "text" : "password"}
           register={register("password", {
             minLength: 8,
             maxLength: 128,
@@ -53,7 +57,19 @@ function Register() {
           })}
           error={errors.password}
           errorMsg="Минимальная длина пароля 8 символов"
-        />
+        >
+          <button
+            type="button"
+            onClick={() => setViewPass(!viewPass)}
+            className="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-lg p-1 hover:bg-indigo-50 hover:text-indigo-600 focus:bg-indigo-50 focus:text-indigo-600 focus-visible:outline-none"
+          >
+            {viewPass ? (
+              <EyeIcon strokeWidth={1} />
+            ) : (
+              <EyeOffIcon strokeWidth={1} />
+            )}
+          </button>
+        </FormField>
 
         <Button type="submit" size="lg">
           Создать аккаунт
