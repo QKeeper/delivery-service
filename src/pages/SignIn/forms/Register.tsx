@@ -15,9 +15,8 @@ function Register() {
     formState: { errors },
   } = useForm<RegisterInputs>();
 
-  const [viewPass, setViewPass] = useState(false);
-
   const onSubmit = handleSubmit((data) => API.User.register(data));
+  const [viewPass, setViewPass] = useState(false);
 
   return (
     <form onSubmit={onSubmit} className="flex w-96 flex-col gap-4">
@@ -61,11 +60,12 @@ function Register() {
           type="button"
           onClick={() => setViewPass(!viewPass)}
           className="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-lg p-1 hover:bg-indigo-50 hover:text-indigo-600 focus:bg-indigo-50 focus:text-indigo-600 focus-visible:outline-none"
+          aria-label={viewPass ? "Скрыть пароль" : "Показать пароль"}
         >
           {viewPass ? (
-            <EyeIcon strokeWidth={1} />
-          ) : (
             <EyeOffIcon strokeWidth={1} />
+          ) : (
+            <EyeIcon strokeWidth={1} />
           )}
         </button>
       </FormField>
